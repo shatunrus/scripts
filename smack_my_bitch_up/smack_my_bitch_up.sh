@@ -7,7 +7,7 @@ rint=$(shuf -i 0-$count -n1)
 readarray reason < $reasons
 msg=$(${otamzka[$rint]})
 
-function help {
+function print_help {
 	echo "Usage:"
 	echo " "
 	echo "-s for send SMS"
@@ -36,15 +36,18 @@ if [ w | grep -c "$mylogin" -gt 0 ]; then
 				;;
 			a ) send_sms && send_mail
 				;;
-			*) echo -ne "No args or args is invalid. Default is -a\n for help use $(basename $0) -h\n"
-			   echo -n "do you want to continue (Y/n)?"
-			   read answer
-			   case "$answer" in
-			   	y|Y ) send_sms && send_mail
-			   		;;
-			   	n|N ) exit 0
+			h ) print_help
+				;;
+			*)  echo -ne "No args or args is invalid. Default is -a\n for help use $(basename $0) -h\n"
+			    echo -n "do you want to continue (Y/n)?"
+			    read answer
+			    case "$answer" in
+			    	y|Y ) send_sms && send_mail
+			   	    ;;
+			    	n|N ) exit 0
 					;;
-			   esac
+			    esac
+			  	;;
 		esac
 	done
 fi
