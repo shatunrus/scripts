@@ -15,4 +15,3 @@ if [ ! -z $newmail ]; then
 		sendEmail -f $mymail -t $kumar -u "RE: $message_tm" -m  "Ok, i fixed it. Please be careful next time" -s smtp.example.ru
 	fi
 fi
-
