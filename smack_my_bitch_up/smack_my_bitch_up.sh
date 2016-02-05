@@ -51,3 +51,4 @@ if [ w | grep -c "$mylogin" -gt 0 ]; then
 		esac
 	done
 fi
+
