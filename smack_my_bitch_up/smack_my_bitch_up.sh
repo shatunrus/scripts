@@ -16,7 +16,7 @@ function print_help {
 }
 
 function send_mail {
-	sendEmail -f from@example.com -t $wifemail -u "Sorry, i'm late" -m ${otamzka[$rint]} -s smtp.example.ru
+	sendEmail -f $mymail -t $wifemail -u "Sorry, i'm late" -m $$msg -s smtp.example.ru
 }
 
 function send_sms {
@@ -43,7 +43,7 @@ if [ w | grep -c "$mylogin" -gt 0 ]; then
 			    read answer
 			    case "$answer" in
 			    	y|Y ) send_sms && send_mail
-			   	    ;;
+					;;
 			    	n|N ) exit 0
 					;;
 			    esac
