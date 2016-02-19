@@ -1,4 +1,6 @@
 #!/bin/bash
+#add to your user crontab like:
+#0 21 * * 1-5 smack_my_bitch_up.sh -s 
 
 source ./config.cfg
 
@@ -11,7 +13,7 @@ function print_help {
 	echo "Usage:"
 	echo " "
 	echo "-s for send SMS"
-	echo "-m for send e-mail"
+	echo "-e for send e-mail"
 	echo "-a for send SMS and e-mail"
 }
 
@@ -27,10 +29,11 @@ function send_sms {
 	fi
 }
 
+#just for manual start
 if [ w | grep -c "$mylogin" -gt 0 ]; then
 	while getops ":s:m:a" opt; do
 		case $opt in
-			m ) send_mail
+			e ) send_mail
 				;;
 			s ) send_sms
 				;;
