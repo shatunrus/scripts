@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo -ne "crons:\n"
 cat ./crons | sed "s/\*//g" | while read line; do
 echo -ne "  '$(echo $line | awk -F'/' '{ print $NF }' | awk '{ print $1}' | sed 's/\.php//g')':\n"
 if [ $(echo $line | awk '{ print $2 }' | grep -c ',') -gt 0 ]; then
